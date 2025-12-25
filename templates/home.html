@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Home — Mahamud Hasan{% endblock %}
+
+{% block content %}
+
+<!-- HERO -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center py-16">
+
+  <!-- Photo -->
+  <div class="flex justify-center lg:justify-end">
+    <img src="{% static 'img/me.jpg' %}"
+         class="rounded-xl shadow-xl w-64 border-2 border-accent"
+         alt="Your Photo" />
+  </div>
+
+  <!-- Text -->
+  <div class="lg:col-span-2 space-y-5">
+
+    <h1 class="text-4xl sm:text-5xl font-bold accent leading-tight">
+      Mahamud Hasan
+    </h1>
+
+    <p class="text-lg text-secondary max-w-2xl">
+      Aspiring Backend Developer and DevOps Enthusiast building secure, efficient,
+      scalable backend systems using Django and DRF.
+    </p>
+
+    <p class="text-secondary max-w-2xl leading-relaxed">
+      I design, build, and document RESTful APIs, implement authentication (JWT),
+      and I am also learning DevOps practices.
+      Below are projects and live links — click any project to explore.
+    </p>
+
+    <!-- Buttons -->
+    <div class="pt-4 flex flex-wrap gap-4">
+      <a href="{% url 'projects' %}"
+         class="px-5 py-3 rounded btn-accent font-semibold">
+        View Projects
+      </a>
+
+      <a href="https://github.com/Mahmud-Hasan2024"
+         target="_blank"
+         class="px-5 py-3 rounded border border-accent text-accent font-semibold
+                hover:bg-accent hover:text-white transition">
+        GitHub
+      </a>
+
+      <a href="https://www.linkedin.com/in/mahmud-hasan-2a19892a6/"
+         target="_blank"
+         class="px-5 py-3 rounded border border-accent text-accent font-semibold
+                hover:bg-accent hover:text-white transition">
+        LinkedIn
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- LATEST PROJECTS -->
+<section class="mt-20">
+
+  <h2 class="text-2xl font-semibold mb-8 accent">
+    Latest Projects
+  </h2>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+    {% for project in projects %}
+      <article class="card rounded-lg overflow-hidden shadow-md
+                      border border-accent/10 bg-secondary_bg
+                      hover:shadow-xl transition">
+
+        <!-- image or placeholder -->
+        {% if project.screenshot %}
+          <img src="{{ project.screenshot.url }}"
+               alt="{{ project.title }}"
+               class="w-full h-44 object-cover">
+        {% else %}
+          <div class="w-full h-44 bg-primary flex items-center justify-center text-secondary">
+            No screenshot
+          </div>
+        {% endif %}
+
+        <div class="p-5 flex flex-col h-full">
+          <h3 class="text-lg font-semibold text-accent">
+            {{ project.title }}
+          </h3>
+
+          <p class="mt-2 text-secondary flex-1">
+            {{ project.short_description }}
+          </p>
+
+          <div class="mt-4 flex items-center justify-between">
+            <div class="text-sm text-secondary">
+              {{ project.tech_stack|default:"—" }}
+            </div>
+
+            <a href="{{ project.get_absolute_url }}"
+               class="px-4 py-2 rounded btn-accent text-sm font-semibold">
+              Details
+            </a>
+          </div>
+        </div>
+      </article>
+    {% endfor %}
+
+  </div>
+
+  <div class="mt-10 text-right">
+    <a href="{% url 'projects' %}"
+       class="text-accent font-semibold hover:underline">
+      See all projects →
+    </a>
+  </div>
+
+</section>
+
+{% endblock %}

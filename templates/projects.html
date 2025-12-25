@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Projects — Mahamud Hasan{% endblock %}
+
+{% block content %}
+<h1 class="text-3xl font-bold mb-6 accent">Projects</h1>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+  {% for project in projects %}
+  <article class="card rounded-lg overflow-hidden shadow-md border border-accent/10">
+    {% if project.screenshot %}
+      <img src="{{ project.screenshot.url }}" alt="{{ project.title }}" class="w-full h-48 object-cover">
+    {% else %}
+      <div class="w-full h-48 bg-primary flex items-center justify-center text-secondary">No screenshot</div>
+    {% endif %}
+
+    <div class="p-4 card-content">
+      <h3 class="text-lg font-semibold text-accent">{{ project.title }}</h3>
+      <p class="mt-2 text-secondary flex-1">{{ project.short_description }}</p>
+
+      <div class="mt-4 flex items-center justify-between">
+        <div class="text-sm text-secondary">{{ project.tech_stack|default:"—" }}</div>
+        <a href="{{ project.get_absolute_url }}" class="px-3 py-1 rounded btn-accent text-sm">Details</a>
+      </div>
+    </div>
+  </article>
+  {% endfor %}
+</div>
+{% endblock %}
