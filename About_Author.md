@@ -52,7 +52,7 @@ Aspiring **Backend Developer** and **DevOps Enthusiast** with a passion for buil
 - **Tech Stack:** Django, TailwindCSS, PostgreSQL
 - **Description:** A full-featured online news portal with admin control, article management, and authentication.
 
-#### 🧠 [AI Complaint System](https://ai-complaint-system-p1ox.onrender.com/login/?next=/)
+#### 🧠 [AI Complaint System](https://ai-complaint-system-p1ox.onrender.com)
 
 - **Live:** [https://ai-complaint-system-p1ox.onrender.com](https://ai-complaint-system-p1ox.onrender.com)
 - **GitHub:** [https://github.com/Mahmud-Hasan2024/ai-complaint-system](https://github.com/Mahmud-Hasan2024/ai-complaint-system)
