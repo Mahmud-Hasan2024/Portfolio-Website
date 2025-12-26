@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 import os
+import cloudinary
 from decouple import config
 from pathlib import Path
 
@@ -152,11 +153,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-CLOUDINARY_STORAGE = {
-    "CLOUD_NAME": config("cloud_name"),
-    "API_KEY": config("api_key"),
-    "API_SECRET": config("api_secret"),
-}
+cloudinary.config(
+    cloud_name=config("cloud_name"),
+    api_key=config("api_key"),
+    api_secret=config("api_secret"),
+    secure=True
+)
 
 
 # STORAGES = {
