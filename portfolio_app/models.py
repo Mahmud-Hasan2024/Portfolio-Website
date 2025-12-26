@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 
@@ -15,7 +16,7 @@ class Project(models.Model):
     swagger_url = models.URLField(blank=True)
     repo_frontend = models.URLField(blank=True)
     repo_backend = models.URLField(blank=True)
-    screenshot = models.ImageField(upload_to='project_screenshots/', blank=True, null=True)
+    screenshot = CloudinaryField('screenshot', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
