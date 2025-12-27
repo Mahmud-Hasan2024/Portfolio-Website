@@ -6,154 +6,172 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>{% block title %}Mahamud Hasan{% endblock %}</title>
 
-  <!-- Tailwind CDN -->
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- DaisyUI CDN (optional utilities) -->
+
+  <!-- DaisyUI -->
   <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.css" rel="stylesheet">
 
-<style>
-  :root{
-    --primary-bg: #0F1419;
-    --secondary-bg: #1A2332;
-    --accent: #E8914C;
-    --text-primary: #E8E8E8;
-    --text-secondary: #A0A0A0;
-  }
+  <style>
+    :root{
+      --primary-bg: #0F1419;
+      --secondary-bg: #1A2332;
+      --accent: #E8914C;
+      --text-primary: #E8E8E8;
+      --text-secondary: #A0A0A0;
+    }
 
-  /* DaisyUI theme override */
-  :root{
-    --p: 25 20% 8%;        /* primary */
-    --s: 218 28% 15%;     /* secondary */
-    --a: 32 78% 59%;      /* accent (orange) */
-    --n: 0 0% 10%;
-    --b1: 218 28% 10%;
-    --bc: 0 0% 90%;
-  }
+    /* DaisyUI theme override */
+    :root{
+      --p: 25 20% 8%;
+      --s: 218 28% 15%;
+      --a: 32 78% 59%;
+      --n: 0 0% 10%;
+      --b1: 218 28% 10%;
+      --bc: 0 0% 90%;
+    }
 
-  /* custom helpers */
-  .bg-primary { background: var(--primary-bg); }
-  .bg-secondary { background: var(--secondary-bg); }
-  .text-primary { color: var(--text-primary); }
-  .text-secondary { color: var(--text-secondary); }
-  .accent { color: var(--accent); }
-  .bg-accent { background: var(--accent); }
-  .btn-accent { background: var(--accent); color: #0F1419; }
+    /* Backgrounds & text */
+    .bg-primary { background: var(--primary-bg); }
+    .bg-secondary { background: var(--secondary-bg); }
+    .text-primary { color: var(--text-primary); }
+    .text-secondary { color: var(--text-secondary); }
+    .accent { color: var(--accent); }
 
-  /* FIX LINKS TURNING CYAN */
-  a { color: var(--accent); }
-  a:hover { opacity: .85; }
+    /* Accent button (SAFE) */
+    .btn-accent {
+      background: var(--accent);
+      color: #0F1419 !important;
+    }
+    .btn-accent:hover {
+      background: transparent;
+      color: var(--accent) !important;
+    }
 
-  /* FIX BUTTON OUTLINES */
-  .btn-outline{
-    border-color: var(--accent) !important;
-    color: var(--accent) !important;
-  }
-</style>
+    /* Normal links ONLY (buttons excluded) */
+    a:not(.btn) {
+      color: var(--accent);
+    }
+    a:not(.btn):hover {
+      opacity: .85;
+    }
 
+    /* Outline button accent fix */
+    .btn-outline {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+  </style>
 </head>
+
 <body class="bg-primary text-primary antialiased">
 
-  <!-- NAV -->
-  <header class="bg-secondary shadow">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
-        <a href="{% url 'home' %}" class="text-xl font-semibold accent">Mahamud Hasan</a>
-        <nav class="flex items-center gap-6 text-sm text-secondary">
-          <a href="{% url 'home' %}" class="hover:text-primary">Home</a>
-          <a href="{% url 'projects' %}" class="hover:text-primary">Projects</a>
-          <a href="{% url 'contact' %}" class="hover:text-primary">Contact</a>
-          <a href="{% static 'resume/Mahamud_Hasan_Resume.pdf' %}"
-            download
-            class="px-4 py-2 rounded btn-accent font-semibold">
-            Resume
-          </a>
-        </nav>
-      </div>
+<!-- NAV -->
+<header class="bg-secondary shadow">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <a href="{% url 'home' %}" class="text-xl font-semibold accent">
+        Mahamud Hasan
+      </a>
+
+      <nav class="flex items-center gap-6 text-sm text-secondary">
+        <a href="{% url 'home' %}" class="hover:text-primary">Home</a>
+        <a href="{% url 'projects' %}" class="hover:text-primary">Projects</a>
+        <a href="{% url 'contact' %}" class="hover:text-primary">Contact</a>
+
+        <a href="{% static 'resume/Mahamud_Hasan_Resume.pdf' %}"
+           download
+           class="btn btn-accent font-semibold">
+          Resume
+        </a>
+      </nav>
     </div>
-  </header>
+  </div>
+</header>
 
-  <!-- MAIN -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-    {% block content %}{% endblock %}
-  </main>
+<!-- MAIN -->
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+  {% block content %}{% endblock %}
+</main>
 
-  <!-- FOOTER -->
-  <footer class="mt-24 border-t border-accent/20 bg-secondary_bg">
-    <div class="max-w-7xl mx-auto px-6 py-10 flex flex-col sm:flex-row
-                justify-between items-center gap-6">
+<!-- FOOTER -->
+<footer class="mt-24 border-t border-accent/20 bg-secondary_bg">
+  <div class="max-w-7xl mx-auto px-6 py-10 flex flex-col sm:flex-row
+              justify-between items-center gap-6">
 
-      <!-- Copyright -->
-      <p class="text-secondary text-sm">
-        © {{ now|date:"Y" }} Mahamud Hasan. All rights reserved.
-      </p>
+    <!-- Copyright -->
+    <p class="text-secondary text-sm">
+      © {{ now|date:"Y" }} Mahamud Hasan. All rights reserved.
+    </p>
 
-      <!-- Social Icons -->
-      <div class="flex gap-6">
+    <!-- Social Icons -->
+    <div class="flex gap-6">
 
-        <!-- GitHub -->
-        <a href="https://github.com/Mahmud-Hasan2024"
-          target="_blank"
-          class="text-secondary hover:text-accent transition"
-          aria-label="GitHub">
-          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385
-                    .6.113.82-.258.82-.577v-2.234c-3.338.726-4.033-1.61
-                    -4.033-1.61-.546-1.387-1.333-1.757-1.333-1.757
-                    -1.09-.745.082-.73.082-.73
-                    1.205.085 1.84 1.237 1.84 1.237
-                    1.07 1.834 2.807 1.304 3.492.997
-                    .108-.776.418-1.305.76-1.605
-                    -2.665-.3-5.466-1.332-5.466-5.93
-                    0-1.31.467-2.38 1.236-3.22
-                    -.123-.303-.535-1.523.117-3.176
-                    0 0 1.008-.322 3.3 1.23
-                    .957-.266 1.983-.399 3.003-.404
-                    1.02.005 2.047.138 3.006.404
-                    2.29-1.552 3.296-1.23 3.296-1.23
-                    .653 1.653.241 2.873.118 3.176
-                    .77.84 1.235 1.91 1.235 3.22
-                    0 4.61-2.804 5.625-5.475 5.92
-                    .43.37.823 1.102.823 2.222
-                    v3.293c0 .32.218.694.825.576
-                    C20.565 21.796 24 17.297 24 12
-                    24 5.37 18.63 0 12 0z"/>
-          </svg>
-        </a>
+      <!-- GitHub -->
+      <a href="https://github.com/Mahmud-Hasan2024"
+        target="_blank"
+        class="text-secondary hover:text-accent transition"
+        aria-label="GitHub">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385
+                  .6.113.82-.258.82-.577v-2.234c-3.338.726-4.033-1.61
+                  -4.033-1.61-.546-1.387-1.333-1.757-1.333-1.757
+                  -1.09-.745.082-.73.082-.73
+                  1.205.085 1.84 1.237 1.84 1.237
+                  1.07 1.834 2.807 1.304 3.492.997
+                  .108-.776.418-1.305.76-1.605
+                  -2.665-.3-5.466-1.332-5.466-5.93
+                  0-1.31.467-2.38 1.236-3.22
+                  -.123-.303-.535-1.523.117-3.176
+                  0 0 1.008-.322 3.3 1.23
+                  .957-.266 1.983-.399 3.003-.404
+                  1.02.005 2.047.138 3.006.404
+                  2.29-1.552 3.296-1.23 3.296-1.23
+                  .653 1.653.241 2.873.118 3.176
+                  .77.84 1.235 1.91 1.235 3.22
+                  0 4.61-2.804 5.625-5.475 5.92
+                  .43.37.823 1.102.823 2.222
+                  v3.293c0 .32.218.694.825.576
+                  C20.565 21.796 24 17.297 24 12
+                  24 5.37 18.63 0 12 0z"/>
+        </svg>
+      </a>
 
-        <!-- LinkedIn -->
-        <a href="https://www.linkedin.com/in/mahmud-hasan-2a19892a6/"
-          target="_blank"
-          class="text-secondary hover:text-accent transition"
-          aria-label="LinkedIn">
-          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M4.98 3.5c0 1.38-1.11 2.5-2.48 2.5S0 4.88 0 3.5
-                    1.11 1 2.5 1s2.48 1.12 2.48 2.5zM0 24h5V7H0v17z
-                    M7.5 7H12v2.5h.1c.63-1.2 2.18-2.5 4.49-2.5
-                    4.8 0 5.7 3.16 5.7 7.28V24h-5v-7.5
-                    c0-1.8-.03-4.1-2.5-4.1
-                    -2.5 0-2.88 1.95-2.88 3.97V24h-5V7z"/>
-          </svg>
-        </a>
+      <!-- LinkedIn -->
+      <a href="https://www.linkedin.com/in/mahmud-hasan-2a19892a6/"
+        target="_blank"
+        class="text-secondary hover:text-accent transition"
+        aria-label="LinkedIn">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M4.98 3.5c0 1.38-1.11 2.5-2.48 2.5S0 4.88 0 3.5
+                  1.11 1 2.5 1s2.48 1.12 2.48 2.5zM0 24h5V7H0v17z
+                  M7.5 7H12v2.5h.1c.63-1.2 2.18-2.5 4.49-2.5
+                  4.8 0 5.7 3.16 5.7 7.28V24h-5v-7.5
+                  c0-1.8-.03-4.1-2.5-4.1
+                  -2.5 0-2.88 1.95-2.88 3.97V24h-5V7z"/>
+        </svg>
+      </a>
 
-        <!-- Facebook -->
-        <a href="https://www.facebook.com/mahmodhasan.shourov"
-          target="_blank"
-          class="text-secondary hover:text-accent transition"
-          aria-label="Facebook">
-          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M22.675 0h-21.35C.6 0 0 .6 0 1.325v21.351
-                    C0 23.4.6 24 1.325 24H12.82v-9.294H9.692V11.01
-                    h3.128V8.309c0-3.1 1.894-4.788 4.66-4.788
-                    1.325 0 2.464.099 2.795.143v3.24
-                    l-1.918.001c-1.504 0-1.795.715-1.795 1.763
-                    v2.313h3.587l-.467 3.696h-3.12V24h6.116
-                    C23.4 24 24 23.4 24 22.675V1.325
-                    C24 .6 23.4 0 22.675 0z"/>
-          </svg>
-        </a>
+      <!-- Facebook -->
+      <a href="https://www.facebook.com/mahmodhasan.shourov"
+        target="_blank"
+        class="text-secondary hover:text-accent transition"
+        aria-label="Facebook">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M22.675 0h-21.35C.6 0 0 .6 0 1.325v21.351
+                  C0 23.4.6 24 1.325 24H12.82v-9.294H9.692V11.01
+                  h3.128V8.309c0-3.1 1.894-4.788 4.66-4.788
+                  1.325 0 2.464.099 2.795.143v3.24
+                  l-1.918.001c-1.504 0-1.795.715-1.795 1.763
+                  v2.313h3.587l-.467 3.696h-3.12V24h6.116
+                  C23.4 24 24 23.4 24 22.675V1.325
+                  C24 .6 23.4 0 22.675 0z"/>
+        </svg>
+      </a>
 
-      </div>
     </div>
-  </footer>
+  </div>
+</footer>
+
 </body>
 </html>

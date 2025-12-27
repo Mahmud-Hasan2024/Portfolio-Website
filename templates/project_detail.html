@@ -3,33 +3,68 @@
 
 {% block content %}
 <div class="max-w-4xl mx-auto space-y-6">
+
   <h1 class="text-3xl font-bold accent">{{ project.title }}</h1>
 
   {% if project.screenshot %}
-    <img src="{{ project.screenshot.url }}" alt="{{ project.title }}" class="w-full h-72 object-cover rounded-lg border border-accent/10">
+    <img src="{{ project.screenshot.url }}"
+         alt="{{ project.title }}"
+         class="w-full h-72 object-cover rounded-lg border border-accent/10">
   {% endif %}
 
   <div class="bg-secondary p-6 rounded-lg">
-    <p class="text-primary leading-relaxed">{{ project.description|linebreaks }}</p>
 
-    <p class="mt-4 text-secondary"><strong class="text-accent">Tech stack:</strong> {{ project.tech_stack|default:"—" }}</p>
+    <p class="text-primary leading-relaxed">
+      {{ project.description|linebreaks }}
+    </p>
+
+    <p class="mt-4 text-secondary">
+      <strong class="accent">Tech stack:</strong>
+      {{ project.tech_stack|default:"—" }}
+    </p>
 
     <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
+
       {% if project.live_url %}
-        <a href="{{ project.live_url }}" target="_blank" class="btn btn-outline bg-accent text-white hover:bg-accent-dark">Live Demo</a>
+        <a href="{{ project.live_url }}"
+           target="_blank"
+           class="btn btn-accent">
+          Live Demo
+        </a>
       {% endif %}
+
       {% if project.api_url %}
-        <a href="{{ project.api_url }}" target="_blank" class="btn btn-outline">API</a>
+        <a href="{{ project.api_url }}"
+           target="_blank"
+           class="btn btn-outline">
+          API
+        </a>
       {% endif %}
+
       {% if project.swagger_url %}
-        <a href="{{ project.swagger_url }}" target="_blank" class="btn btn-outline">Swagger</a>
+        <a href="{{ project.swagger_url }}"
+           target="_blank"
+           class="btn btn-outline">
+          Swagger
+        </a>
       {% endif %}
+
       {% if project.repo_frontend %}
-        <a href="{{ project.repo_frontend }}" target="_blank" class="btn btn-outline">Frontend Repo</a>
+        <a href="{{ project.repo_frontend }}"
+           target="_blank"
+           class="btn btn-outline">
+          Frontend Repo
+        </a>
       {% endif %}
+
       {% if project.repo_backend %}
-        <a href="{{ project.repo_backend }}" target="_blank" class="btn btn-outline">Backend Repo</a>
+        <a href="{{ project.repo_backend }}"
+           target="_blank"
+           class="btn btn-outline">
+          Backend Repo
+        </a>
       {% endif %}
+
     </div>
   </div>
 </div>
