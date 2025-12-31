@@ -67,24 +67,59 @@
 <body class="bg-primary text-primary antialiased">
 
 <!-- NAV -->
+<!-- NAVBAR -->
+<!-- NAVBAR -->
+<!-- NAV -->
 <header class="bg-secondary shadow">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
-      <a href="{% url 'home' %}" class="text-xl font-semibold accent">
-        Mahamud Hasan
+
+      <!-- LEFT: LOGO -->
+      <a href="{% url 'home' %}"
+         class="text-xl font-semibold accent whitespace-nowrap">
+        <span class="hidden sm:inline">Mahamud Hasan</span>
+        <span class="sm:hidden">MH</span>
       </a>
 
-      <nav class="flex items-center gap-6 text-sm text-secondary">
+      <!-- CENTER: DESKTOP MENU -->
+      <nav class="hidden lg:flex items-center gap-8 text-sm text-secondary">
         <a href="{% url 'home' %}" class="hover:text-primary">Home</a>
         <a href="{% url 'projects' %}" class="hover:text-primary">Projects</a>
         <a href="{% url 'contact' %}" class="hover:text-primary">Contact</a>
-
-        <a href="{% static 'resume/Mahamud_Hasan_Resume.pdf' %}"
-           download
-           class="btn btn-accent font-semibold">
-          Resume
-        </a>
       </nav>
+
+      <!-- CENTER: MOBILE HAMBURGER -->
+      <div class="dropdown dropdown-center lg:hidden">
+        <label tabindex="0" class="btn btn-ghost text-primary">
+          <svg xmlns="http://www.w3.org/2000/svg"
+               class="h-5 w-5"
+               fill="none"
+               viewBox="0 0 24 24"
+               stroke="currentColor">
+            <path stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </label>
+
+        <ul tabindex="0"
+            class="menu menu-sm dropdown-content mt-3 z-[1]
+                   p-4 shadow bg-secondary rounded-box
+                   w-52 text-center text-secondary">
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'projects' %}">Projects</a></li>
+          <li><a href="{% url 'contact' %}">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- RIGHT: RESUME BUTTON -->
+      <a href="{% static 'resume/Mahamud_Hasan_Resume.pdf' %}"
+         download
+         class="btn btn-accent font-semibold whitespace-nowrap">
+        Resume
+      </a>
+
     </div>
   </div>
 </header>
