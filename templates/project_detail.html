@@ -16,7 +16,7 @@
   <div class="bg-secondary p-6 rounded-lg">
 
     <div class="text-primary leading-relaxed markdown-content">
-      {{ project.description|markdownify }}
+      {{ project.description|markdownify|safe }}
     </div>
 
     <p class="mt-4 text-secondary">
