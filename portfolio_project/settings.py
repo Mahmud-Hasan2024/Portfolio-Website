@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'cloudinary_storage',
     'portfolio_app',
+    'markdownx',
 ]
 
 DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"

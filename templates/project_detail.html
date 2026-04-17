@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load markdownx %}
 {% block title %}{{ project.title }} — Mahmud Hasan{% endblock %}
 
 {% block content %}
@@ -14,9 +15,9 @@
 
   <div class="bg-secondary p-6 rounded-lg">
 
-    <p class="text-primary leading-relaxed">
-      {{ project.description|linebreaks }}
-    </p>
+    <div class="text-primary leading-relaxed markdown-content">
+      {{ project.description|markdownify }}
+    </div>
 
     <p class="mt-4 text-secondary">
       <strong class="accent">Tech stack:</strong>

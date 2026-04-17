@@ -1,10 +1,11 @@
 from django.contrib import admin
 from portfolio_app.models import Project, ContactMessage
+from markdownx.admin import MarkdownxModelAdmin
 
 # Register your models here.
 
 @admin.register(Project)
-class ProjectAdmin(admin.ModelAdmin):
+class ProjectAdmin(MarkdownxModelAdmin):
     list_display = ('title', 'slug', 'created_at')
     search_fields = ('title', 'tech_stack', 'short_description', 'description')
     prepopulated_fields = {"slug": ("title",)}

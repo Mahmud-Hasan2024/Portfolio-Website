@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
 from cloudinary.models import CloudinaryField
+from markdownx.models import MarkdownxField
 
 # Create your models here.
 
@@ -9,7 +10,7 @@ class Project(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=220, unique=True, blank=True)
     short_description = models.CharField(max_length=255)
-    description = models.TextField(blank=True)
+    description = MarkdownxField(blank=True)
     tech_stack = models.CharField(max_length=255, blank=True)
     live_url = models.URLField(blank=True)
     api_url = models.URLField(blank=True)
