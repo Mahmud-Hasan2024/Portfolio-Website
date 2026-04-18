@@ -1,3 +1,4 @@
+import markdown
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView
 from django.views import View
@@ -28,9 +29,27 @@ class ProjectsView(ListView):
 class ProjectDetailView(DetailView):
     model = Project
     template_name = 'project_detail.html'
-    # lookup by slug field
     slug_field = 'slug'
     slug_url_kwarg = 'slug'
+
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get the context
+        context = super().get_context_data(**kwargs)
+        
+        # Get the current project object
+        project = self.get_object()
+        
+        # Convert the markdown description to HTML
+        # We add 'extra' (for tables/lists) and 'codehilite' (for syntax highlighting)
+        if project.description:
+            context['description_html'] = markdown.markdown(
+                project.description,
+                extensions=['extra', 'codehilite', 'toc']
+            )
+        else:
+            context['description_html'] = ""
+            
+        return context
 
 
 class ContactView(View):

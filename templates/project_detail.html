@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load markdownx %}
+{% comment %} {% load markdownx_tags %} {% endcomment %}
 {% block title %}{{ project.title }} — Mahmud Hasan{% endblock %}
 
 {% block content %}
@@ -16,7 +16,7 @@
   <div class="bg-secondary p-6 rounded-lg">
 
     <div class="text-primary leading-relaxed markdown-content">
-      {{ project.description|markdownify|safe }}
+      {{ description_html|safe }}
     </div>
 
     <p class="mt-4 text-secondary">
